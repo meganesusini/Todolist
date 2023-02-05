@@ -8,9 +8,9 @@ let lines = Array();
 
 
 // when we press the add button
-add.onclick = addLine();
+add.onclick = function() {
 
-function addLine() {
+// function addLine() {
     tasksArray.push(input.value); // add a task in the array
 
     // Add a line in the table
@@ -24,6 +24,7 @@ function addLine() {
 
     // Creation of the second TD
     let td2 = document.createElement("td");
+    td2.className = "td2";
     let element = document.createTextNode(document.getElementById("input").value);
     
     td2.appendChild(element);
@@ -31,11 +32,13 @@ function addLine() {
     // Creation of the third TD
     let td3 = document.createElement("td");
     let a = document.createElement("a");
+    a.className = "trash";
 
     let img = document.createElement("img");
     img.setAttribute('src', 'trash-fill.svg');
 
     a.appendChild(img);
+
     td3.appendChild(a);
 
     // Creation of the TR and add the TDs in the TR
@@ -51,9 +54,29 @@ function addLine() {
     nb += 1;
     //***//
 
-    lines.push(tr);
-    return lines;
+    let trashes = document.getElementsByClassName("trash");
+    let trs = Array.from(document.getElementsByClassName("tr"));
+    for (let i = 0; i < trashes.length; i++) {
+        trashes[i].onclick = function() {
+            trs[i].remove();
+        };
+    }
 
+    let checkboxes = document.getElementsByClassName("checkbox");
+    let td2s = document.getElementsByClassName("td2");
+    for (let i=0; i<checkboxes.length; i++) {
+        checkboxes[i].onchange = function() {
+            if(checkboxes[i].checked==true) {
+               td2s[i].innerHTML = "<del>" + tasksArray[i] + "</del>";
+            //    td2s[td2s.length-1].innerHTML = "<del>" + td2s[i].textContent + "</del>";
+
+            }
+            else if (checkboxes[i].checked == false) {
+                td2s[i].innerHTML = tasksArray[i];
+            }
+        }
+    }
+    
     // for (let i=0; i<checkboxes.length; i++) {
     //     checkboxes[i].checked = console.log("hello");
     // }
