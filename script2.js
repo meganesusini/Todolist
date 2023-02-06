@@ -98,10 +98,10 @@ add.onclick = function() {
             // console.log(checkboxes[i].previousElementSibling.checked);
             if(!checkboxes[i].previousElementSibling.checked==true) {
                 // console.log("check");
-                td2s[td2s.length-1].innerHTML = "<del>" + td2s[i].textContent + "</del>";
+                td2s[i].innerHTML = "<del>" + td2s[i].textContent + "</del>";
              }
              else{
-                td2s[td2s.length-1].innerHTML = td2s[i].textContent;
+                td2s[i].innerHTML = td2s[i].textContent;
 
              }
             

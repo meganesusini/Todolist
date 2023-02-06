@@ -11,156 +11,139 @@
         padding: 30px;
         background-color: #fcfcfc;  
         }
-        div
+        section
         {
-            text-align: center;
+        text-align: center;
         margin: 0 auto;
-        max-width: 700px;
+        min-width: 465px;
+        max-width: 465px;
         height: 100px; 
-        /* background-color: grey; */
         border-radius: 3px;
         }
+        /* Style of the table */
         table{
         margin: 0 auto;
-        max-width: 470px;
-        /* background-color: grey; */
+        min-width: 465px;
+        max-width: 465px;
         border-radius: 3px;
-            /* text-align: center; */
         }
         button, input, table {
-  /* margin: 50px; */
-  font-family: inherit;
-}
-
-/* The container */
-.container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-}
-
-/* Hide the browser's default checkbox */
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 30px;
-  width: 30px;
-  background-color: #eee;
-}
-
-/*test*/
-.tr, .trash>img {
-    height: 30px;
-  width: 30px;
-}
-.trash {
-    cursor: pointer;
-}
-img {
-    top:14px;
-    position: relative;
-}
-.td2 {
-    width: 50vw;
-    text-align: left;
-    position: relative;
-    top: 12px;
-    font-size: 16px;
-    /* padding-left: 50px; */
-}
-.td1, .td3 {
-    width: 10vw;
-}
-
-.td3 {
-    text-align: end;
-}
-/*endtest*/
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-  background-color: #dcbaff;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 10px;
-  top: 3px;
-  width: 10px;
-  height: 18px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-/* End of Page styling */
-
-/* Simple button styling -- No animation */
-.simple {
-  font-size: 20px;
-  font-weight: 200;
-  letter-spacing: 1px;
-  padding: 13px 50px 13px;
-  outline: 0;
-  border: 1px solid black;
-  cursor: pointer;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0);
-}
-
-.simple::after {
-  content: "";
-  background-color: #dcbaff;
-  width: 100%;
-  z-index: -1;
-  position: absolute;
-  height: 100%;
-  top: 7px;
-  left: 7px;
-}
-/* End of Simple Button */
+        font-family: inherit;
+        }
+        .tr, .trash>img {
+        height: 25px;
+        width: 25px;
+        }
+        .trash {
+        cursor: pointer;
+        }
+        .trash img:hover {
+        opacity: 0.8;
+        }
+        img {
+        top:10px;
+        position: relative;
+        }
+        .td2 {
+        width: 50vw;
+        text-align: left;
+        position: relative;
+        top: 7px;
+        font-size: 18px;
+        }
+        .td1, .td3 {
+            width: 10vw;
+        }
+        .td3 {
+            text-align: end;
+        }
+        /* End style of the table */
+        /* The container */
+        .container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        }
+        /* Hide the browser's default checkbox */
+        .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        }
+        /* Create a custom checkbox */
+        .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        }
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark {
+        background-color: #ccc;
+        }
+        /* When the checkbox is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+        background-color: #dcbaff;
+        }
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+        }
+        /* Show the checkmark when checked */
+        .container input:checked ~ .checkmark:after {
+        display: block;
+        }
+        /* Style the checkmark/indicator */
+        .container .checkmark:after {
+        left: 7px;
+        top: 0px;
+        width: 10px;
+        height: 18px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        }
+        /* Simple button styling -- No animation */
+        .simple {
+        font-size: 20px;
+        font-weight: 200;
+        letter-spacing: 1px;
+        padding: 13px 50px 13px;
+        outline: 0;
+        border: 1px solid black;
+        cursor: pointer;
+        position: relative;
+        background-color: rgba(0, 0, 0, 0);
+        }
+        .simple::after {
+        content: "";
+        background-color: #dcbaff;
+        width: 100%;
+        z-index: -1;
+        position: absolute;
+        height: 100%;
+        top: 7px;
+        left: 7px;
+        }
+        /* End of Simple Button */
     </style>
 </head>
 <body>
-    <div>
+    <section>
         <input type="text" id="input" class="simple" value="" placeholder="Enter a task"/>
         <button type="button" id="add" class="simple">Add</button>
-        <!-- <button id="add">ADD</button> -->
-        <!-- <label class="container">Two
-            <input type="checkbox">
-            <span class="checkmark"></span>
-          </label> -->
         <table id="table">
         </table>
-    </div>
+    </section>
     
     <script src="script2.js"></script>
 </body>

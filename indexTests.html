@@ -1,47 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="papa"> <p id="premierFils">Premier paragraphe </p> <p id="secondFils">Second paragraphe </p> <p id="dernierFils">Dernier Paragraphe </p> </div>
- <div id="papaBis">
-   <p id="premierFilsBis">Premier paragraphe </p>
-   <p id="secondFilsBis">Second paragraphe </p>
-   <p id="dernierFilsBis">Dernier Paragraphe </p>
- </div>
- <script>
-function start(){
-  var pere=document.getElementById("papa");
-  var fils1=document.getElementById("premierFils");
-  var fils2=document.getElementById("secondFils");
-  var fils3=document.getElementById("dernierFils");
-
-//   alert(pere.firstChild.firstChild.nodeValue);
-  console.log("hello");
-//   console.log(pere.lastChild.firstChild.nodeValue);
-  console.log(pere.childNodes[1].firstChild.nodeValue);
-  console.log(fils1.parentNode);
-//   console.log(fils1.nextSibling.firstChild.nodeValue);
-//   console.log(fils3.previousSibling.firstChild.nodeValue);
-
-
-  var pereBis=document.getElementById("papaBis");
-  var fils1Bis=document.getElementById("premierFilsBis");
-  var fils2Bis=document.getElementById("secondFilsBis");
-  var fils3Bis=document.getElementById("dernierFilsBis");
-
-//   console.log(pereBis.firstChild.firstChild.nodeValue);
-//   console.log(pereBis.lastChild.firstChild.nodeValue);
-//   console.log(pereBis.childNodes[1].firstChild.nodeValue);
-//   console.log(fils1Bis.parentNode);
-//   console.log(fils1Bis.nextSibling.firstChild.nodeValue);
-//   console.log(fils3Bis.previousSibling.firstChild.nodeValue);
+<style>
+    *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
-start();
- </script>
-</body>
-</html>
+body{
+    height: 100vh;
+    background: #066acd;
+}
+.container{
+    width: 40%;
+    top: 50%;
+    left: 50%;
+    background: white;
+    border-radius: 10px;
+    min-width: 450px;
+    position: absolute;
+    min-height: 100px;
+    transform: translate(-50%,-50%);
+}
+#newtask{
+    position: relative;
+    padding: 30px 20px;
+}
+#newtask input{
+    width: 75%;
+    height: 45px;
+    padding: 12px;
+    color: #111111;
+    font-weight: 500;
+    position: relative;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-size: 15px;
+    border: 2px solid #d1d3d4;
+}
+
+#newtask input:focus{
+    outline: none;
+    border-color: #0d75ec;
+}
+#newtask button{
+    position: relative;
+    float: right;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #0d75ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    width: 20%;
+    height: 45px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+}
+#tasks{
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    background-color: #ffffff;
+    padding: 30px 20px;
+    margin-top: 10px;
+}
+
+.task{
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #939697;
+    cursor: pointer;
+    background-color: #c5e1e6;
+    height: 50px;
+    margin-bottom: 8px;
+    padding: 5px 10px;
+    display: flex;
+}
+.task span{
+    font-family: 'Poppins',sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+.task button{
+    background-color: #6583e5;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    height: 100%;
+    width: 40px;
+    border-radius: 5px;
+}
+
+</style>
+
+<div class="container">
+    <div id="newtask">
+        <input type="text" id="input" class="simple" value="" placeholder="Enter a task"/>
+        <button type="button" id="push" class="simple">Add</button>
+    </div>
+    <table id="tasks"></table>
+
+</div>
+
+<script>
+   document.querySelector('#push').onclick = function(){
+    if(document.querySelector('#newtask input').value.length == 0){
+        alert("Kindly Enter Task Name!!!!")
+    }
+
+    else{
+        document.querySelector('#tasks').innerHTML += `
+            <tr class="tr">
+                <td id="td1">
+                    <input type="checkbox"/>
+                </td>
+                <td>
+                    ${document.querySelector('#newtask input').value}
+                </td>
+                <td>
+                    <img class="delete" src="trash-fill.svg">
+                </td>
+            </div>
+        `;
+
+        var current_tasks = document.querySelectorAll(".delete");
+        for(var i=0; i<current_tasks.length; i++){
+            current_tasks[i].onclick = function(){
+                document.querySelectorAll(".tr").item(i).remove();
+            }
+        }
+    }
+}
+</script>
