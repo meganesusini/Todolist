@@ -3,24 +3,25 @@ tasksArray = Array(); // stock all the tasks
 let add = document.getElementById("add"); // add button
 let input = document.getElementById("input"); // input
 
-let nb = 0;
-let lines = Array();
-
-
-// when we press the add button
-add.onclick = function() {
-
-// function addLine() {
-    tasksArray.push(input.value); // add a task in the array
-
+function addLine() {
     // Add a line in the table
     // Creation of the first TD
     let td1 = document.createElement("td");
+    td1.className = "td1";
+    // let inputCheck = document.createElement("input");
+    // inputCheck.type = "checkbox";
+    // inputCheck.className = "checkbox";
+    let label = document.createElement("label");
+    label.className = "container";
     let inputCheck = document.createElement("input");
     inputCheck.type = "checkbox";
-    inputCheck.className = "checkbox";
+    let span = document.createElement("span");
+    span.className = "checkmark";
+    label.appendChild(inputCheck);
+    label.appendChild(span);
 
-    td1.appendChild(inputCheck);
+    // td1.appendChild(inputCheck);
+    td1.appendChild(label);
 
     // Creation of the second TD
     let td2 = document.createElement("td");
@@ -31,6 +32,7 @@ add.onclick = function() {
 
     // Creation of the third TD
     let td3 = document.createElement("td");
+    td3.className = "td3";
     let a = document.createElement("a");
     a.className = "trash";
 
@@ -50,61 +52,75 @@ add.onclick = function() {
 
     // Add the TR in the table
     document.getElementById("table").appendChild(tr);
-
-    nb += 1;
     //***//
+}
 
-    let trashes = document.getElementsByClassName("trash");
+
+// when we press the add button
+add.onclick = function() {
+
+    tasksArray.push(input.value); // add a task in the array
+
+    addLine();    
+
+    let trashes = Array.from(document.getElementsByClassName("trash"));
     let trs = Array.from(document.getElementsByClassName("tr"));
+
+    // let checkboxes = Array.from(document.getElementsByClassName("checkbox"));
+    let checkboxes = Array.from(document.getElementsByClassName("checkmark"));
+    let td2s = Array.from(document.getElementsByClassName("td2"));
+
+    // function crossOutLine(indexDelLine) {
+    //     let crossOutElement = "<del>" + td2s[indexDelLine].textContent + "</del>";
+    //     trs[indexDelLine].remove();
+    //     trs.splice(indexDelLine,1);
+    //     trashes.splice(indexDelLine,1);
+    //     checkboxes.splice(indexDelLine,1);
+    //     td2s.splice(indexDelLine,1);
+    //     console.log("trs.length: " + trs.length);
+    //     // console.log(trs);
+    //     console.log("trashes.length: " + trashes.length);
+    //     console.log("checkboxes.length : " + checkboxes.length);
+    //     console.log("td2s.length : " + td2s.length);
+    // }
+
+
     for (let i = 0; i < trashes.length; i++) {
         trashes[i].onclick = function() {
             trs[i].remove();
         };
     }
 
-    let checkboxes = document.getElementsByClassName("checkbox");
-    let td2s = document.getElementsByClassName("td2");
+    //test
+    for (let i=0; i<checkboxes.length; i++) {
+        checkboxes[i].onclick = function() {
+            // td2s[i].innerHTML = "<del>" + tasksArray[i] + "</del>";
+            // console.log(checkboxes[i].previousElementSibling.checked);
+            if(!checkboxes[i].previousElementSibling.checked==true) {
+                // console.log("check");
+                td2s[td2s.length-1].innerHTML = "<del>" + td2s[i].textContent + "</del>";
+             }
+             else{
+                td2s[td2s.length-1].innerHTML = td2s[i].textContent;
+
+             }
+            
+        }
+    } 
+
+    //endtest
     for (let i=0; i<checkboxes.length; i++) {
         checkboxes[i].onchange = function() {
+            console.log("checkbox : " + i);
             if(checkboxes[i].checked==true) {
                td2s[i].innerHTML = "<del>" + tasksArray[i] + "</del>";
             //    td2s[td2s.length-1].innerHTML = "<del>" + td2s[i].textContent + "</del>";
-
             }
             else if (checkboxes[i].checked == false) {
                 td2s[i].innerHTML = tasksArray[i];
             }
         }
-    }
+    } 
     
-    // for (let i=0; i<checkboxes.length; i++) {
-    //     checkboxes[i].checked = console.log("hello");
-    // }
-    
-
-    // let trashesArray = document.getElementsByTagName("a");
-    // for (let i=0; i<trashesArray.length; i++) {
-    //     trashesArray[i].onclick = function () {
-    //         console.log(i);
-    //     }
-    // }
     
 }
-
-// Function which select all the checkboxes
-// function selectCheckboxes() {
-//     // When a checkbox is checked
-//     let checkboxes = document.getElementsByClassName("checkbox");
-//     // console.log("length : " + checkboxes.length);
-//     // console.log("check 1 : " + checkboxes[0].checked);
-    
-//     return checkboxes;
-// }
-
-// let lineTR = addLine();
-// console.log(lineTR);
-
-
-
-
-// console.log(trashesArray);
