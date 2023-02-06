@@ -1,53 +1,90 @@
-import 'bootstrap';
-function addElement() {
-    // function which add a line in a table
-    let tr = document.createElement("tr");
+let add = document.getElementById("add"); 
+let input = document.getElementById("input"); 
 
+function addLine() {
+    // Add a line in the table
+    // Creation of the first TD
     let td1 = document.createElement("td");
+    td1.className = "td1";
 
-    let input = document.createElement("input");
-    input.type = "checkbox";
-    input.className = "form-check-input me-2";
+    let label = document.createElement("label");
+    label.className = "container";
 
+    let inputCheck = document.createElement("input");
+    inputCheck.type = "checkbox";
+
+    let span = document.createElement("span");
+    span.className = "checkmark";
+
+    label.appendChild(inputCheck);
+    label.appendChild(span);
+
+    td1.appendChild(label);
+
+    // Creation of the second TD
     let td2 = document.createElement("td");
+    td2.className = "td2";
+    let element = document.createTextNode(document.getElementById("input").value);
+    
+    td2.appendChild(element);
 
-    newElement = document.getElementById("newElement").value;
-    tdText = document.createTextNode(newElement);
-
-
+    // Creation of the third TD
     let td3 = document.createElement("td");
-
+    td3.className = "td3";
     let a = document.createElement("a");
+    a.className = "trash";
 
     let img = document.createElement("img");
     img.setAttribute('src', 'trash-fill.svg');
 
     a.appendChild(img);
+
     td3.appendChild(a);
 
-    td2.appendChild(tdText);
-
-    td1.appendChild(input);
-
+    // Creation of the TR and add the TDs in the TR
+    let tr = document.createElement("tr");
+    tr.className = "tr";
     tr.appendChild(td1);
     tr.appendChild(td2);
     tr.appendChild(td3);
 
-    tbody= document.getElementById("tbody").appendChild(tr);
-    console.log(document.getElementById("tbody"));
-    // document.getElementById("table").appendChild(tbody);
-
+    // Add the TR in the table
+    document.getElementById("table").appendChild(tr);
+    //***//
 }
 
-function addElement2() {
-let tr = document.createElement("tr");
-// let td =document.createElement("td");
-// let tdText = document.createTextNode("hello");
-tr.innerText = "heeloo";
-// tr.appendChild(td)
-document.getElementById("table").appendChild(document.getElementById("tbody").appendChild(tr));
+// when we press the add button
+add.onclick = function() {
+
+    addLine();    
+
+    let trashes = Array.from(document.getElementsByClassName("trash"));
+    let trs = Array.from(document.getElementsByClassName("tr"));
+
+    let checkboxes = Array.from(document.getElementsByClassName("checkmark"));
+    let td2s = Array.from(document.getElementsByClassName("td2"));
+
+    for (let i = 0; i < trashes.length; i++) {
+        trashes[i].onclick = function() {
+            trs[i].remove();
+        };
+    }
+
+    for (let i=0; i<checkboxes.length; i++) {
+        checkboxes[i].onclick = function() {
+
+            if(!checkboxes[i].previousElementSibling.checked==true) {
+                td2s[i].innerHTML = "<del>" + td2s[i].textContent + "</del>";
+             }
+             else{
+                td2s[i].innerHTML = td2s[i].textContent;
+
+             }
+            
+        }
+    } 
+
+
+    
+    
 }
-
-// see this : https://stackoverflow.com/questions/38779538/creating-a-to-do-list
-// include("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css");
-
